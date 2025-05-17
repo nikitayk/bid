@@ -1,23 +1,36 @@
 import React, { useEffect } from 'react';
+import Layout from './components/Layout';
 import BudgetSlider from './components/BudgetSlider';
 import CampaignStats from './components/CampaignStats';
 import BidConsole from './components/BidConsole';
 import BidTable from './components/BidTable';
+import Loader from './components/Loader';
+import Notification from './components/Notification';
 
 const App = () => {
   useEffect(() => {
-    document.title = "BIDWIT"; 
+    document.title = 'BIDWIT';
   }, []);
 
   return (
-    <div className="p-4 space-y-6">
-      {/**/}
-      <h1 className="text-2xl font-bold text-center">BIDWIT</h1>
-      <BudgetSlider />
-      <CampaignStats />
-      <BidTable />
-      <BidConsole />
-    </div>
+    <>
+      {/* Global notifications and loader */}
+      <Notification />
+      <Loader />
+
+      {/* Page layout with sidebar and header */}
+      <Layout>
+        <div className="p-4 space-y-6">
+          <h1 className="text-3xl font-bold text-gradient text-center">BIDWIT</h1>
+
+          {/* Controls and dashboard components */}
+          <BudgetSlider />
+          <CampaignStats />
+          <BidTable />
+          <BidConsole />
+        </div>
+      </Layout>
+    </>
   );
 };
 

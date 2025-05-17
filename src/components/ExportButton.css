@@ -1,0 +1,21 @@
+.export-btn {
+  background: #6c63ff;
+  color: #fff;
+  border: none;
+  padding: 0.6em 1.2em;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  transition: background 0.2s;
+}
+.export-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+.export-btn:hover:not(:disabled) {
+  background: #574fd6;
+}

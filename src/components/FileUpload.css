@@ -1,0 +1,46 @@
+.file-upload-container {
+  border: 2px dashed #6c63ff;
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  background: #fafbff;
+  transition: border-color 0.2s, background 0.2s;
+  cursor: pointer;
+  outline: none;
+  margin: 16px 0;
+}
+
+.file-upload-container.drag-active {
+  border-color: #2ecc40;
+  background: #f0fff0;
+}
+
+.file-upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.file-upload-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.browse-btn {
+  background: none;
+  border: none;
+  color: #6c63ff;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0;
+  font-size: 1em;
+}
+
+.browse-btn:focus {
+  outline: 2px solid #6c63ff;
+}
+
+strong {
+  color: #2d3748;
+}
