@@ -49,21 +49,18 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-punkbg font-punk text-punktext px-8 py-8">
+    <div className="dashboard-root">
       {showConfetti && <ConfettiEffect />}
       {/* Top bar: BIDWIT logo/title (no "Dashboard"), Help button */}
-      <div className="flex items-center justify-between mb-8">
-        <div className="text-3xl font-extrabold text-punkblue tracking-widest drop-shadow-punk">
-          BIDWIT
-        </div>
+      <div className="dashboard-topbar">
+        <div className="dashboard-logo">BIDWIT</div>
         <HelpGuide />
       </div>
 
-      {/* Top row: Control Panel (left), Chart and Stats (right) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-        {/* Left: Control Panel */}
+      {/* Top grid: Control Panel (left), Chart and Stats (right) */}
+      <div className="dashboard-topgrid">
         <div>
-          <div className="bg-punkcard shadow-punk rounded-2xl p-8 mb-8">
+          <div className="dashboard-card">
             <ControlPanel
               nFactor={nFactor}
               setNFactor={setNFactor}
@@ -77,31 +74,27 @@ const Dashboard = () => {
             />
           </div>
         </div>
-        {/* Right: Chart and Campaign Stats */}
-        <div className="flex flex-col gap-8">
-          <div className="bg-punkcard shadow-punk rounded-2xl p-8">
+        <div className="dashboard-rightcol">
+          <div className="dashboard-card">
             <PerformanceChart data={performanceData} />
           </div>
-          <div className="bg-punkcard shadow-punk rounded-2xl p-8">
+          <div className="dashboard-card">
             <CampaignStats stats={campaignStats} />
           </div>
         </div>
       </div>
 
       {/* Lower grid: BudgetDonut, KPIStats, BidOutcomes, BidConsole */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-        {/* Budget Donut */}
-        <div className="bg-punkcard shadow-punk rounded-2xl p-8 flex items-center justify-center">
+      <div className="dashboard-lowergrid">
+        <div className="dashboard-card dashboard-center">
           <BudgetDonut percent={budgetUsed} />
         </div>
-        {/* KPI Stats */}
-        <div className="bg-punkcard shadow-punk rounded-2xl p-8 flex items-center justify-center">
+        <div className="dashboard-card dashboard-center">
           <KPIStats stats={kpiStats} />
         </div>
-        {/* Bid Outcomes */}
-        <div className="bg-punkcard shadow-punk rounded-2xl p-8 col-span-2">
-          <div className="flex items-center justify-between mb-2">
-            <h3 className="text-punkblue text-lg font-extrabold tracking-wider">Bid Outcomes</h3>
+        <div className="dashboard-card dashboard-colspan2">
+          <div className="dashboard-bid-table-header">
+            <h3 className="dashboard-bid-title">Bid Outcomes</h3>
             <ExportButton
               fileName="bid_outcomes.csv"
               data={bidTableData}
@@ -116,8 +109,7 @@ const Dashboard = () => {
           </div>
           <BidTable data={bidTableData} />
         </div>
-        {/* Bid Console */}
-        <div className="bg-punkcard shadow-punk rounded-2xl p-8 col-span-2">
+        <div className="dashboard-card dashboard-colspan2">
           <BidConsole logs={bidConsoleLogs} />
         </div>
       </div>
@@ -126,6 +118,7 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
 
 
 
