@@ -18,3 +18,10 @@
   animation: fade-in 0.3s ease-out;
 }
 
+/* Optional: Add these for global font and background consistency */
+body {
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  background: #fafbff;
+  color: #2d3748;
+}
+

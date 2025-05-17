@@ -1,0 +1,11 @@
+.performance-chart {
+  width: 100%;
+  height: 100%;
+}
+
+.performance-chart h3 {
+  margin-bottom: 8px;
+  color: #2d3748;
+  font-size: 1.1em;
+  font-weight: 600;
+}

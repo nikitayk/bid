@@ -1,51 +1,43 @@
 import React from 'react';
-import {
-  PieChart,
-  Pie,
-  Cell,
-  ResponsiveContainer,
-  Tooltip,
-  Legend,
-} from 'recharts';
+import './BudgetDonut.css';
 
-const COLORS = ['#00c9a7', '#1e293b']; // Spent, Remaining
-
-const BudgetDonut = ({ spent, total }) => {
-  const remaining = Math.max(total - spent, 0);
-
-  const data = [
-    { name: 'Spent', value: spent },
-    { name: 'Remaining', value: remaining },
-  ];
+const BudgetDonut = ({ percent }) => {
+  const radius = 40;
+  const stroke = 8;
+  const normalizedRadius = radius - stroke / 2;
+  const circumference = normalizedRadius * 2 * Math.PI;
+  const strokeDashoffset = circumference - (percent / 100) * circumference;
 
   return (
-    <div className="bg-white/5 p-4 rounded-2xl shadow-xl border border-white/10">
-      <h2 className="text-xl font-semibold mb-4 text-white">Budget Usage</h2>
-      <ResponsiveContainer width="100%" height={300}>
-        <PieChart>
-          <Pie
-            data={data}
-            cx="50%"
-            cy="50%"
-            innerRadius={70}
-            outerRadius={100}
-            fill="#8884d8"
-            paddingAngle={3}
-            dataKey="value"
-            label={({ name, percent }) =>
-              `${name}: ${(percent * 100).toFixed(0)}%`
-            }
-          >
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-            ))}
-          </Pie>
-          <Tooltip contentStyle={{ backgroundColor: '#1a1a1a', border: 'none' }} />
-          <Legend />
-        </PieChart>
-      </ResponsiveContainer>
+    <div className="budget-donut">
+      <svg height={radius * 2} width={radius * 2}>
+        <circle
+          stroke="#ecebff"
+          fill="transparent"
+          strokeWidth={stroke}
+          r={normalizedRadius}
+          cx={radius}
+          cy={radius}
+        />
+        <circle
+          stroke="#6c63ff"
+          fill="transparent"
+          strokeWidth={stroke}
+          strokeLinecap="round"
+          strokeDasharray={circumference + ' ' + circumference}
+          strokeDashoffset={strokeDashoffset}
+          r={normalizedRadius}
+          cx={radius}
+          cy={radius}
+        />
+      </svg>
+      <div className="budget-donut-label">
+        <span>{percent}%</span>
+        <div>Budget Used</div>
+      </div>
     </div>
   );
 };
 
 export default BudgetDonut;
+

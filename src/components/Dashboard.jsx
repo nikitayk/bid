@@ -1,131 +1,124 @@
 import React, { useState } from 'react';
-import BidConsole from './BidConsole';
-import BidTable from './BidTable';
-import PerformanceChart from './PerformanceChart';
-import WinChart from './WinChart';
+import ControlPanel from './ControlPanel';
 import CampaignStats from './CampaignStats';
+import KPIStats from './KPIStats';
+import PerformanceChart from './PerformanceChart';
+import BudgetDonut from './BudgetDonut';
+import BidTable from './BidTable';
+import BidConsole from './BidConsole';
+import ExportButton from './ExportButton';
+import HelpGuide from './HelpGuide';
+import ConfettiEffect from './ConfettiEffect';
+
+import './Dashboard.css';
 
 const Dashboard = () => {
-  const [nFactor, setNFactor] = useState(7);
+  // Example state hooks (replace with your actual logic/data sources)
+  const [nFactor, setNFactor] = useState(9);
   const [budget, setBudget] = useState(1000);
-  const [logs, setLogs] = useState([
-    'Simulation initialized...',
-    'Waiting for bids...',
-    'Bid WIN from Acme Corp',
-    'Bid LOST to Beta Ads',
-  ]);
+  const [mode, setMode] = useState('Simulated');
+  const [file, setFile] = useState(null);
+  const [showConfetti, setShowConfetti] = useState(false);
 
-  const mockBids = [
-    {
-      id: 'BID-001',
-      advertiser: 'Acme Corp',
-      bidPrice: 2.35,
-      won: true,
-      timestamp: Date.now() - 100000,
-    },
-    {
-      id: 'BID-002',
-      advertiser: 'Beta Ads',
-      bidPrice: 1.95,
-      won: false,
-      timestamp: Date.now() - 80000,
-    },
-    {
-      id: 'BID-003',
-      advertiser: 'Gamma Media',
-      bidPrice: 2.1,
-      won: true,
-      timestamp: Date.now() - 60000,
-    },
-  ];
-
+  // Example data (replace with real data from your app)
+  const campaignStats = { impressions: 120000, clicks: 8500, ctr: 7.08, cost: 1200 };
+  const kpiStats = { bids: 2000, wins: 800, winRate: 40, spent: 1200 };
   const performanceData = [
-    { timestamp: '10:00', ctr: 3.1, cvr: 0.8 },
-    { timestamp: '10:05', ctr: 3.6, cvr: 0.9 },
-    { timestamp: '10:10', ctr: 4.0, cvr: 1.1 },
-    { timestamp: '10:15', ctr: 4.2, cvr: 1.3 },
+    { time: '10:00', ctr: 5.2, cvr: 1.8 },
+    { time: '11:00', ctr: 6.0, cvr: 2.1 },
+    { time: '12:00', ctr: 7.1, cvr: 2.6 },
+    // ...more data
+  ];
+  const budgetUsed = 60; // percent (for BudgetDonut)
+  const bidTableData = [
+    { id: 1, ctr: 0.12, cvr: 0.03, price: 1.25, result: 'Won' },
+    { id: 2, ctr: 0.14, cvr: 0.04, price: 1.15, result: 'Lost' },
+    // ...more rows
+  ];
+  const bidConsoleLogs = [
+    { type: 'info', message: 'Bid process started...' },
+    { type: 'success', message: 'Bid #1 won at $1.25' },
+    { type: 'error', message: 'Bid #2 lost' },
+    // ...more logs
   ];
 
-  const winChartData = [
-    { name: 'Won', value: 65 },
-    { name: 'Lost', value: 25 },
-    { name: 'Skipped', value: 10 },
-  ];
-
+  // Handlers
+  const handleFileSelected = (file) => setFile(file);
   const handleRun = () => {
-    setLogs((prev) => [
-      ...prev,
-      `Running simulation with N-Factor: ${nFactor} and Budget: $${budget}`,
-    ]);
-    // Future: Add simulation logic here
+    // Your run logic here
+    setShowConfetti(true);
+    setTimeout(() => setShowConfetti(false), 3000);
   };
-
   const handleReset = () => {
-    setNFactor(7);
+    setNFactor(9);
     setBudget(1000);
-    setLogs(['Simulation reset.']);
+    setMode('Simulated');
+    setFile(null);
+    // Reset other states as needed
   };
 
   return (
-    <div className="space-y-8 px-4 py-6">
-      {/* Campaign Settings */}
-      <div className="bg-white/5 border border-white/10 backdrop-blur-md p-6 rounded-2xl shadow-xl">
-        <h2 className="text-xl font-semibold mb-4 text-white">Campaign Settings</h2>
+    <div className="dashboard">
+      {showConfetti && <ConfettiEffect />}
+      <div className="dashboard-header">
+        <h1>BIDWIT Dashboard</h1>
+        <HelpGuide />
+      </div>
 
-        <div className="mb-4">
-          <label className="block font-medium text-white mb-1">N-Factor: {nFactor}</label>
-          <input
-            type="range"
-            min="1"
-            max="10"
-            value={nFactor}
-            onChange={(e) => setNFactor(Number(e.target.value))}
-            className="w-full"
+      <div className="dashboard-row">
+        <div className="dashboard-card dashboard-control-panel">
+          <ControlPanel
+            nFactor={nFactor}
+            setNFactor={setNFactor}
+            budget={budget}
+            setBudget={setBudget}
+            mode={mode}
+            setMode={setMode}
+            onFileSelected={handleFileSelected}
+            onRun={handleRun}
+            onReset={handleReset}
           />
         </div>
-
-        <div className="mb-4">
-          <label className="block font-medium text-white mb-1">Campaign Budget ($)</label>
-          <input
-            type="number"
-            value={budget}
-            onChange={(e) => setBudget(Number(e.target.value))}
-            className="w-full px-3 py-2 border rounded-lg bg-white/10 text-white placeholder:text-gray-400"
-          />
+        <div className="dashboard-card dashboard-campaign-stats">
+          <CampaignStats stats={campaignStats} />
         </div>
-
-        <div className="flex gap-4">
-          <button
-            onClick={handleRun}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
-          >
-            Run
-          </button>
-          <button
-            onClick={handleReset}
-            className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg"
-          >
-            Reset
-          </button>
+        <div className="dashboard-card dashboard-budget-donut">
+          <BudgetDonut percent={budgetUsed} />
+        </div>
+        <div className="dashboard-card dashboard-kpi-stats">
+          <KPIStats stats={kpiStats} />
         </div>
       </div>
 
-      {/* Campaign KPI Stats */}
-      <CampaignStats />
-
-      {/* Charts Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <PerformanceChart data={performanceData} />
-        <WinChart data={winChartData} />
-      </div>
-
-      {/* Bid Console + Table Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <BidTable bids={mockBids} />
-        <BidConsole logs={logs} />
+      <div className="dashboard-row">
+        <div className="dashboard-card dashboard-performance-chart">
+          <PerformanceChart data={performanceData} />
+        </div>
+        <div className="dashboard-card dashboard-bid-table">
+          <div className="dashboard-bid-table-header">
+            <h3>Bid Outcomes</h3>
+            <ExportButton
+              fileName="bid_outcomes.csv"
+              data={bidTableData}
+              columns={[
+                { label: 'Bid ID', key: 'id' },
+                { label: 'CTR', key: 'ctr' },
+                { label: 'CVR', key: 'cvr' },
+                { label: 'Bid Price', key: 'price' },
+                { label: 'Result', key: 'result' }
+              ]}
+            />
+          </div>
+          <BidTable data={bidTableData} />
+        </div>
+        <div className="dashboard-card dashboard-bid-console">
+          <BidConsole logs={bidConsoleLogs} />
+        </div>
       </div>
     </div>
   );
 };
 
 export default Dashboard;
+
+

@@ -1,0 +1,89 @@
+.control-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 180px;
+  flex: 1;
+}
+
+.control-label {
+  font-weight: 600;
+  margin-bottom: 2px;
+  color: #2d3748;
+}
+
+.mode-toggle {
+  display: flex;
+  gap: 8px;
+}
+
+.mode-btn {
+  padding: 7px 18px;
+  border-radius: 6px;
+  border: 1px solid #6c63ff;
+  background: #fff;
+  color: #6c63ff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.mode-btn.active,
+.mode-btn:hover {
+  background: #6c63ff;
+  color: #fff;
+}
+
+.slider {
+  width: 100%;
+}
+
+.budget-input {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+.control-actions {
+  display: flex;
+  gap: 14px;
+  margin-left: auto;
+}
+
+.run-btn, .reset-btn {
+  padding: 8px 22px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.run-btn {
+  background: #6c63ff;
+  color: #fff;
+}
+
+.run-btn:hover {
+  background: #574fd6;
+}
+
+.reset-btn {
+  background: #f5f6fa;
+  color: #6c63ff;
+  border: 1px solid #6c63ff;
+}
+
+.reset-btn:hover {
+  background: #ecebff;
+}

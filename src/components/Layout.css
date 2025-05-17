@@ -1,0 +1,22 @@
+.layout {
+  display: flex;
+  height: 100vh;
+  background-color: #f7f8fc;
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  overflow-y: auto;
+}
+
+.content-area {
+  padding: 24px;
+  flex-grow: 1;
+  overflow-y: auto;
+  background-color: #fafbff;
+}
+
+

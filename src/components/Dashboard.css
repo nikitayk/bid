@@ -1,0 +1,58 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.dashboard-row {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.dashboard-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(44, 62, 80, 0.08);
+  padding: 28px 24px;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.dashboard-control-panel {
+  flex: 2;
+  min-width: 320px;
+}
+.dashboard-campaign-stats,
+.dashboard-budget-donut,
+.dashboard-kpi-stats {
+  flex: 1;
+  min-width: 220px;
+}
+
+.dashboard-performance-chart {
+  flex: 2;
+}
+.dashboard-bid-table,
+.dashboard-bid-console {
+  flex: 1;
+  min-width: 320px;
+}
+
+.dashboard-bid-table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+

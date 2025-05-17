@@ -1,44 +1,45 @@
 import React from 'react';
+import './BidTable.css';
 
-const BidTable = ({ bids = [] }) => {
+const BidTable = ({ data }) => {
+  if (!data || data.length === 0) {
+    return (
+      <div className="bid-table-empty">
+        No bid data available. Run a campaign to see results here.
+      </div>
+    );
+  }
+
   return (
-    <div className="bg-white p-4 rounded-xl shadow h-64 overflow-y-auto">
-      <h3 className="text-lg font-semibold mb-4">Bid Table</h3>
-      <table className="min-w-full text-sm text-left">
-        <thead className="border-b border-gray-200 text-gray-600">
-          <tr>
-            <th className="px-4 py-2">Bid ID</th>
-            <th className="px-4 py-2">Amount ($)</th>
-            <th className="px-4 py-2">Status</th>
-            <th className="px-4 py-2">Time</th>
+    <table className="bid-table">
+      <thead>
+        <tr>
+          <th>Bid ID</th>
+          <th>CTR</th>
+          <th>CVR</th>
+          <th>Bid Price ($)</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((bid, idx) => (
+          <tr key={bid.id || idx}>
+            <td>{bid.id}</td>
+            <td>{bid.ctr}</td>
+            <td>{bid.cvr}</td>
+            <td>{bid.price}</td>
+            <td className={bid.result === 'Won' ? 'bid-won' : 'bid-lost'}>
+              {bid.result}
+            </td>
           </tr>
-        </thead>
-        <tbody className="text-gray-700">
-          {Array.isArray(bids) && bids.length === 0 ? (
-            <tr>
-              <td colSpan="4" className="text-center py-4 text-gray-400">
-                No bid data available.
-              </td>
-            </tr>
-          ) : (
-            bids.map((bid, index) => (
-              <tr key={index} className="hover:bg-gray-50 transition">
-                <td className="px-4 py-2">{bid.id ?? 'N/A'}</td>
-                <td className="px-4 py-2">${(bid.bidPrice ?? 0).toFixed(2)}</td>
-                <td className="px-4 py-2">{bid.won ? 'Won' : 'Lost'}</td>
-                <td className="px-4 py-2">
-                  {bid.timestamp ? new Date(bid.timestamp).toLocaleTimeString() : 'N/A'}
-                </td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
-    </div>
+        ))}
+      </tbody>
+    </table>
   );
 };
 
 export default BidTable;
+
 
 
 
