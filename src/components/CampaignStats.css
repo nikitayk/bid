@@ -5,27 +5,34 @@
 }
 
 .stat-block {
-  background: #f4f6fa;
-  border-radius: 12px;
+  background: linear-gradient(135deg, #232946 80%, #181c2f 100%);
+  border-radius: 14px;
   padding: 18px 16px;
   min-width: 90px;
   text-align: center;
-  box-shadow: 0 1px 4px rgba(44,62,80,0.04);
+  box-shadow: 0 0 8px #00eaff80;
+  border: 1.5px solid #00eaff40;
   flex: 1;
+  transition: box-shadow 0.2s, background 0.2s;
 }
 
 .stat-label {
-  color: #2563eb;
-  font-size: 0.97em;
-  font-weight: 600;
+  color: #00eaff;
+  font-size: 1em;
+  font-family: 'Orbitron', 'Rajdhani', Arial, sans-serif;
+  font-weight: 700;
   margin-bottom: 4px;
+  letter-spacing: 0.04em;
 }
 
 .stat-value {
-  font-size: 1.3em;
-  font-weight: 700;
-  color: #232946;
+  font-size: 1.5em;
+  font-weight: 800;
+  color: #fff;
+  font-family: 'Orbitron', 'Rajdhani', Arial, sans-serif;
+  text-shadow: 0 0 6px #00eaff80;
 }
+
 
 
 

@@ -9,16 +9,15 @@ import BidConsole from './BidConsole';
 import ExportButton from './ExportButton';
 import HelpGuide from './HelpGuide';
 import ConfettiEffect from './ConfettiEffect';
-import './Dashboard.css';
 
 const Dashboard = () => {
+  // Example state and handlers (replace with your actual logic/data)
   const [nFactor, setNFactor] = useState(9);
   const [budget, setBudget] = useState(1000);
   const [mode, setMode] = useState('Simulated');
   const [file, setFile] = useState(null);
   const [showConfetti, setShowConfetti] = useState(false);
 
-  // Example data
   const campaignStats = { impressions: 120000, clicks: 8500, ctr: 7.08, cost: 1200 };
   const kpiStats = { bids: 2000, wins: 800, winRate: 40, spent: 1200 };
   const performanceData = [
@@ -50,48 +49,59 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="dashboard">
+    <div className="min-h-screen bg-punkbg font-punk text-punktext px-8 py-8">
       {showConfetti && <ConfettiEffect />}
-      <div className="dashboard-header">
-        <h1 className="dashboard-title">BIDWIT Dashboard</h1>
+      {/* Top bar: BIDWIT logo/title (no "Dashboard"), Help button */}
+      <div className="flex items-center justify-between mb-8">
+        <div className="text-3xl font-extrabold text-punkblue tracking-widest drop-shadow-punk">
+          BIDWIT
+        </div>
         <HelpGuide />
       </div>
 
-      <div className="dashboard-row">
-        <div className="dashboard-card animate-fadeInUp" style={{ flex: 2 }}>
-          <ControlPanel
-            nFactor={nFactor}
-            setNFactor={setNFactor}
-            budget={budget}
-            setBudget={setBudget}
-            mode={mode}
-            setMode={setMode}
-            onFileSelected={handleFileSelected}
-            onRun={handleRun}
-            onReset={handleReset}
-          />
+      {/* Top row: Control Panel (left), Chart and Stats (right) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        {/* Left: Control Panel */}
+        <div>
+          <div className="bg-punkcard shadow-punk rounded-2xl p-8 mb-8">
+            <ControlPanel
+              nFactor={nFactor}
+              setNFactor={setNFactor}
+              budget={budget}
+              setBudget={setBudget}
+              mode={mode}
+              setMode={setMode}
+              onFileSelected={handleFileSelected}
+              onRun={handleRun}
+              onReset={handleReset}
+            />
+          </div>
+        </div>
+        {/* Right: Chart and Campaign Stats */}
+        <div className="flex flex-col gap-8">
+          <div className="bg-punkcard shadow-punk rounded-2xl p-8">
+            <PerformanceChart data={performanceData} />
+          </div>
+          <div className="bg-punkcard shadow-punk rounded-2xl p-8">
+            <CampaignStats stats={campaignStats} />
+          </div>
         </div>
       </div>
 
-      <div className="dashboard-row">
-        <div className="dashboard-card animate-fadeInUp">
-          <CampaignStats stats={campaignStats} />
-        </div>
-        <div className="dashboard-card animate-fadeInUp">
+      {/* Lower grid: BudgetDonut, KPIStats, BidOutcomes, BidConsole */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        {/* Budget Donut */}
+        <div className="bg-punkcard shadow-punk rounded-2xl p-8 flex items-center justify-center">
           <BudgetDonut percent={budgetUsed} />
         </div>
-        <div className="dashboard-card animate-fadeInUp">
+        {/* KPI Stats */}
+        <div className="bg-punkcard shadow-punk rounded-2xl p-8 flex items-center justify-center">
           <KPIStats stats={kpiStats} />
         </div>
-      </div>
-
-      <div className="dashboard-row">
-        <div className="dashboard-card animate-fadeInUp" style={{ flex: 2 }}>
-          <PerformanceChart data={performanceData} />
-        </div>
-        <div className="dashboard-card animate-fadeInUp">
-          <div className="dashboard-bid-table-header">
-            <h3>Bid Outcomes</h3>
+        {/* Bid Outcomes */}
+        <div className="bg-punkcard shadow-punk rounded-2xl p-8 col-span-2">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-punkblue text-lg font-extrabold tracking-wider">Bid Outcomes</h3>
             <ExportButton
               fileName="bid_outcomes.csv"
               data={bidTableData}
@@ -106,7 +116,8 @@ const Dashboard = () => {
           </div>
           <BidTable data={bidTableData} />
         </div>
-        <div className="dashboard-card animate-fadeInUp">
+        {/* Bid Console */}
+        <div className="bg-punkcard shadow-punk rounded-2xl p-8 col-span-2">
           <BidConsole logs={bidConsoleLogs} />
         </div>
       </div>
@@ -115,6 +126,8 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+
 
 
 

@@ -1,49 +1,56 @@
-.dashboard {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  background: #f4f6fa;
-  min-height: 100vh;
+/* Main dashboard background and font */
+body, .dashboard-root, .min-h-screen {
+  background: linear-gradient(135deg, #181c2f 0%, #232946 100%);
+  font-family: 'Orbitron', 'Rajdhani', Arial, sans-serif;
+  color: #eaf6fb;
 }
 
-.dashboard-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 18px;
+/* Dashboard container */
+.px-8 { padding-left: 2rem; padding-right: 2rem; }
+.py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+
+/* Top bar */
+.text-3xl { font-size: 1.875rem; }
+.font-extrabold { font-weight: 800; }
+.text-punkblue { color: #00eaff; }
+.tracking-widest { letter-spacing: 0.1em; }
+.drop-shadow-punk { text-shadow: 0 0 8px #00eaff80; }
+
+/* Card base */
+.bg-punkcard {
+  background: linear-gradient(135deg, #232946 80%, #181c2f 100%);
+}
+.shadow-punk {
+  box-shadow: 0 0 16px 2px #00eaff80;
+}
+.rounded-2xl { border-radius: 1rem; }
+.p-8 { padding: 2rem; }
+.mb-8 { margin-bottom: 2rem; }
+
+/* Grid layouts */
+.grid { display: grid; }
+.grid-cols-1 { grid-template-columns: 1fr; }
+.md\:grid-cols-2 { /* for medium+ screens */ }
+.md\:grid-cols-4 { /* for medium+ screens */ }
+.gap-8 { gap: 2rem; }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+
+/* Bid Outcomes header */
+.text-lg { font-size: 1.125rem; }
+.font-extrabold { font-weight: 800; }
+.tracking-wider { letter-spacing: 0.05em; }
+.mb-2 { margin-bottom: 0.5rem; }
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .md\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .md\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
 }
 
-.dashboard-title {
-  color: #232946;
-  font-size: 2.2em;
-  font-weight: 800;
-  letter-spacing: 1px;
-}
-
-.dashboard-row {
-  display: flex;
-  gap: 32px;
-  margin-bottom: 18px;
-}
-
-.dashboard-card {
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 2px 12px rgba(44, 62, 80, 0.08);
-  padding: 32px 24px;
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-
-.dashboard-bid-table-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-}
 
 
 

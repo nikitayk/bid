@@ -1,27 +1,219 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-  background: #f4f6fa;
-  color: #232946;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
+  font-family: 'Orbitron', 'Rajdhani', Arial, sans-serif;
+  background: linear-gradient(135deg, #181c2f 0%, #232946 100%);
+  color: #eaf6fb;
+  transition: background 0.3s, color 0.3s;
+  letter-spacing: 0.02em;
 }
 
-* {
-  box-sizing: border-box;
+/* Remove outline on click but keep it for keyboard nav */
+*:focus:not(:focus-visible) {
+  outline: none;
 }
 
-@keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(20px);}
-  100% { opacity: 1; transform: translateY(0);}
+/* Neon accent variables */
+:root {
+  --neon-blue: #00eaff;
+  --neon-pink: #ff00cc;
+  --neon-purple: #8f00ff;
+  --neon-green: #00ff99;
+  --dark-bg: #181c2f;
+  --card-bg: #22263a;
+  --card-glow: #00eaff80;
 }
-.animate-fadeInUp {
+
+/* Card and panel base style */
+.card, .dashboard-card {
+  background: linear-gradient(135deg, var(--card-bg) 80%, var(--dark-bg) 100%);
+  border-radius: 20px;
+  box-shadow: 0 0 16px 2px var(--card-glow);
+  border: 1.5px solid #00eaff40;
+  padding: 32px 24px;
+  transition: box-shadow 0.2s, background 0.2s;
+}
+
+/* Headings */
+h1, h2, h3, .dashboard-title {
+  font-family: 'Orbitron', 'Rajdhani', Arial, sans-serif;
+  color: var(--neon-blue);
+  text-shadow: 0 0 8px var(--card-glow);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  font-size: 1.7em;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+/* Neon labels */
+.control-label, .stat-label, .kpi-label {
+  color: var(--neon-blue);
+  font-weight: 700;
+  font-size: 1em;
+  letter-spacing: 0.04em;
+}
+
+/* Inputs */
+input, .budget-input, select {
+  background: #232946;
+  border: 1.5px solid var(--neon-blue);
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 1em;
+  font-family: 'Orbitron', 'Rajdhani', Arial, sans-serif;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+input:focus, .budget-input:focus, select:focus {
+  border-color: var(--neon-pink);
+  outline: none;
+}
+
+/* Neon buttons */
+button, .run-btn, .reset-btn, .export-btn {
+  background: linear-gradient(90deg, var(--neon-blue) 0%, var(--neon-purple) 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 0 8px var(--neon-blue);
+  font-weight: 700;
+  font-size: 1.1em;
+  padding: 12px 28px;
+  margin-top: 12px;
+  cursor: pointer;
+  font-family: 'Orbitron', 'Rajdhani', Arial, sans-serif;
+  letter-spacing: 0.04em;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+button:hover, .run-btn:hover, .reset-btn:hover, .export-btn:hover {
+  background: linear-gradient(90deg, var(--neon-pink) 0%, var(--neon-blue) 100%);
+  box-shadow: 0 0 16px var(--neon-pink);
+}
+
+/* Neon table */
+table, .bid-table {
+  background: transparent;
+  border-radius: 12px;
+  overflow: hidden;
+  color: #eaf6fb;
+}
+
+th, td {
+  border-bottom: 1px solid #232946;
+  padding: 10px 14px;
+}
+
+th {
+  color: var(--neon-blue);
+  background: #181c2f;
+  font-weight: 700;
+}
+
+tr:nth-child(even) {
+  background: #232946;
+}
+
+tr:hover {
+  background: #181c2f;
+}
+
+.bid-won {
+  color: var(--neon-green);
+  font-weight: 700;
+}
+
+.bid-lost {
+  color: var(--neon-pink);
+  font-weight: 700;
+}
+
+/* Neon file upload area */
+.file-upload-container {
+  border: 2px dashed var(--neon-blue);
+  border-radius: 14px;
+  background: #181c2f;
+  color: var(--neon-blue);
+  padding: 28px;
+  text-align: center;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.file-upload-container.drag-active {
+  border-color: var(--neon-pink);
+  background: #232946;
+}
+
+.file-upload-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  color: var(--neon-blue);
+}
+
+/* Neon console */
+.bid-console {
+  background: #181c2f;
+  color: #eaf6fb;
+  border-radius: 12px;
+  border: 1.5px solid var(--neon-blue);
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  padding: 16px;
+  box-shadow: 0 0 8px var(--neon-blue);
+}
+
+/* Neon donut chart */
+.budget-donut-label span {
+  color: var(--neon-blue);
+  text-shadow: 0 0 8px var(--card-glow);
+}
+
+.budget-donut-label div {
+  color: #eaf6fb;
+}
+
+.budget-donut svg {
+  transition: stroke-dashoffset 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* Animation for cards */
+.card, .dashboard-card, .stat-block, .kpi-block {
   animation: fadeInUp 0.5s cubic-bezier(0.4,0,0.2,1);
 }
 
+/* Spacing for dashboard rows and cards */
+.dashboard-row {
+  display: flex;
+  gap: 36px;
+  margin-bottom: 24px;
+}
 
+.dashboard-card {
+  margin-bottom: 0;
+}
 
-
+@media (max-width: 900px) {
+  .dashboard-row {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
