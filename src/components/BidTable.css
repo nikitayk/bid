@@ -5,54 +5,45 @@
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 1px 4px rgba(44,62,80,0.04);
-  transition: background 0.2s, color 0.2s;
-}
-body.dark .bid-table {
-  background: #232946;
-  color: #e0e0e0;
 }
 
 .bid-table th, .bid-table td {
   padding: 10px 14px;
   text-align: left;
   font-size: 1em;
-  transition: background 0.2s, color 0.2s;
 }
+
 .bid-table th {
   background: #f4f6fa;
-  color: #4f46e5;
+  color: #2563eb;
   font-weight: 700;
 }
-body.dark .bid-table th {
-  background: #232946;
-  color: #a5b4fc;
-}
+
 .bid-table tr:nth-child(even) {
   background: #f7f8fc;
 }
-body.dark .bid-table tr:nth-child(even) {
-  background: #181826;
-}
+
 .bid-table tr:hover {
-  background: #e0e7ff;
+  background: #dbeafe;
   transition: background 0.2s;
 }
-body.dark .bid-table tr:hover {
-  background: #3730a3;
-}
+
 .bid-won {
-  color: #2ecc40;
+  color: #22c55e;
   font-weight: 700;
 }
+
 .bid-lost {
-  color: #e74c3c;
+  color: #ef4444;
   font-weight: 700;
 }
+
 .bid-table-empty {
   text-align: center;
   padding: 32px 0;
   color: #888;
   font-size: 1.1em;
 }
+
 
 

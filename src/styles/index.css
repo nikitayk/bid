@@ -4,31 +4,24 @@
 
 body {
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-  background: #f7f8fc;
+  background: #f4f6fa;
   color: #232946;
   margin: 0;
   padding: 0;
-  transition: background 0.2s, color 0.2s;
-}
-
-body.dark {
-  background: #181826;
-  color: #e0e0e0;
 }
 
 * {
   box-sizing: border-box;
 }
 
-/* Animations */
 @keyframes fadeInUp {
   0% { opacity: 0; transform: translateY(20px);}
   100% { opacity: 1; transform: translateY(0);}
 }
-
 .animate-fadeInUp {
   animation: fadeInUp 0.5s cubic-bezier(0.4,0,0.2,1);
 }
+
 
 
 

@@ -17,17 +17,6 @@ const Dashboard = () => {
   const [mode, setMode] = useState('Simulated');
   const [file, setFile] = useState(null);
   const [showConfetti, setShowConfetti] = useState(false);
-  const [compact, setCompact] = useState(false);
-
-  // Dark mode toggle
-  const [dark, setDark] = useState(false);
-  React.useEffect(() => {
-    if (dark) {
-      document.body.classList.add('dark');
-    } else {
-      document.body.classList.remove('dark');
-    }
-  }, [dark]);
 
   // Example data
   const campaignStats = { impressions: 120000, clicks: 8500, ctr: 7.08, cost: 1200 };
@@ -64,28 +53,12 @@ const Dashboard = () => {
     <div className="dashboard">
       {showConfetti && <ConfettiEffect />}
       <div className="dashboard-header">
-        <h1>BIDWIT Dashboard</h1>
-        <div className="dashboard-header-actions">
-          <button
-            className="dark-toggle-btn"
-            onClick={() => setDark((v) => !v)}
-            aria-label="Toggle dark mode"
-          >
-            {dark ? '🌙' : '☀️'}
-          </button>
-          <button
-            className="compact-toggle-btn"
-            onClick={() => setCompact((v) => !v)}
-            aria-label="Toggle compact mode"
-          >
-            {compact ? '🔳' : '🔲'}
-          </button>
-          <HelpGuide />
-        </div>
+        <h1 className="dashboard-title">BIDWIT Dashboard</h1>
+        <HelpGuide />
       </div>
 
       <div className="dashboard-row">
-        <div className="dashboard-card dashboard-control-panel animate-fadeInUp">
+        <div className="dashboard-card animate-fadeInUp" style={{ flex: 2 }}>
           <ControlPanel
             nFactor={nFactor}
             setNFactor={setNFactor}
@@ -96,28 +69,27 @@ const Dashboard = () => {
             onFileSelected={handleFileSelected}
             onRun={handleRun}
             onReset={handleReset}
-            compact={compact}
           />
         </div>
       </div>
 
       <div className="dashboard-row">
-        <div className="dashboard-card dashboard-campaign-stats animate-fadeInUp">
-          <CampaignStats stats={campaignStats} compact={compact} />
+        <div className="dashboard-card animate-fadeInUp">
+          <CampaignStats stats={campaignStats} />
         </div>
-        <div className="dashboard-card dashboard-budget-donut animate-fadeInUp">
-          <BudgetDonut percent={budgetUsed} compact={compact} />
+        <div className="dashboard-card animate-fadeInUp">
+          <BudgetDonut percent={budgetUsed} />
         </div>
-        <div className="dashboard-card dashboard-kpi-stats animate-fadeInUp">
-          <KPIStats stats={kpiStats} compact={compact} />
+        <div className="dashboard-card animate-fadeInUp">
+          <KPIStats stats={kpiStats} />
         </div>
       </div>
 
       <div className="dashboard-row">
-        <div className="dashboard-card dashboard-performance-chart animate-fadeInUp">
-          <PerformanceChart data={performanceData} compact={compact} />
+        <div className="dashboard-card animate-fadeInUp" style={{ flex: 2 }}>
+          <PerformanceChart data={performanceData} />
         </div>
-        <div className="dashboard-card dashboard-bid-table animate-fadeInUp">
+        <div className="dashboard-card animate-fadeInUp">
           <div className="dashboard-bid-table-header">
             <h3>Bid Outcomes</h3>
             <ExportButton
@@ -132,10 +104,10 @@ const Dashboard = () => {
               ]}
             />
           </div>
-          <BidTable data={bidTableData} compact={compact} />
+          <BidTable data={bidTableData} />
         </div>
-        <div className="dashboard-card dashboard-bid-console animate-fadeInUp">
-          <BidConsole logs={bidConsoleLogs} compact={compact} />
+        <div className="dashboard-card animate-fadeInUp">
+          <BidConsole logs={bidConsoleLogs} />
         </div>
       </div>
     </div>

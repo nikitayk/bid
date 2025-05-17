@@ -7,10 +7,7 @@
   height: 90px;
   width: 90px;
 }
-.budget-donut.compact {
-  height: 60px;
-  width: 60px;
-}
+
 .budget-donut-label {
   position: absolute;
   top: 50%;
@@ -18,23 +15,17 @@
   transform: translate(-50%, -50%);
   text-align: center;
 }
+
 .budget-donut-label span {
   font-size: 1.2em;
   font-weight: 700;
-  color: #4f46e5;
+  color: #2563eb;
 }
-body.dark .budget-donut-label span {
-  color: #a5b4fc;
-}
+
 .budget-donut-label div {
   font-size: 0.85em;
   color: #232946;
 }
-body.dark .budget-donut-label div {
-  color: #e0e0e0;
-}
-.budget-donut svg {
-  transition: stroke-dashoffset 0.5s cubic-bezier(0.4,0,0.2,1);
-}
+
 
 

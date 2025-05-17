@@ -2,93 +2,40 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  background: #f7f8fc;
+  background: #f4f6fa;
   min-height: 100vh;
-  transition: background 0.2s, color 0.2s;
-}
-body.dark .dashboard {
-  background: #181826;
-  color: #e0e0e0;
 }
 
 .dashboard-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
-.dashboard-header h1 {
+.dashboard-title {
   color: #232946;
-  font-size: 2em;
+  font-size: 2.2em;
   font-weight: 800;
-  transition: color 0.2s;
-}
-body.dark .dashboard-header h1 {
-  color: #a5b4fc;
-}
-
-.dashboard-header-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.dark-toggle-btn, .compact-toggle-btn {
-  background: none;
-  border: none;
-  font-size: 1.5em;
-  cursor: pointer;
-  color: #4f46e5;
-  transition: color 0.2s;
-}
-body.dark .dark-toggle-btn,
-body.dark .compact-toggle-btn {
-  color: #a5b4fc;
+  letter-spacing: 1px;
 }
 
 .dashboard-row {
   display: flex;
-  gap: 24px;
-  margin-bottom: 16px;
+  gap: 32px;
+  margin-bottom: 18px;
 }
 
 .dashboard-card {
   background: #fff;
-  border-radius: 16px;
+  border-radius: 18px;
   box-shadow: 0 2px 12px rgba(44, 62, 80, 0.08);
-  padding: 28px 24px;
+  padding: 32px 24px;
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  animation: fadeInUp 0.5s cubic-bezier(0.4,0,0.2,1);
-  transition: background 0.2s, color 0.2s;
-}
-body.dark .dashboard-card {
-  background: #232946;
-  color: #e0e0e0;
-}
-
-.dashboard-card.compact {
-  padding: 12px 8px;
-}
-
-.dashboard-campaign-stats,
-.dashboard-budget-donut,
-.dashboard-kpi-stats {
-  flex: 1;
-  min-width: 220px;
-}
-
-.dashboard-performance-chart {
-  flex: 2;
-}
-.dashboard-bid-table,
-.dashboard-bid-console {
-  flex: 1;
-  min-width: 320px;
 }
 
 .dashboard-bid-table-header {
@@ -97,6 +44,7 @@ body.dark .dashboard-card {
   align-items: center;
   margin-bottom: 8px;
 }
+
 
 
 
