@@ -1,14 +1,14 @@
 .help-btn {
-  background: #6c63ff;
-  color: #fff;
-  border: none;
+  background: #232946;
+  color: #7dd3fc;
+  border: 1.5px solid #7dd3fc;
   border-radius: 50%;
   width: 36px;
   height: 36px;
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 1px 4px rgba(44,62,80,0.10);
+  box-shadow: 0 1px 4px #10162430;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,13 +25,14 @@
 }
 
 .help-modal {
-  background: #fff;
+  background: #232946;
   border-radius: 16px;
   max-width: 420px;
   width: 95vw;
   padding: 28px 26px 22px 26px;
-  box-shadow: 0 4px 24px rgba(44,62,80,0.12);
+  box-shadow: 0 4px 24px #10162430;
   position: relative;
+  color: #eaf6fb;
 }
 
 .help-modal-header {
@@ -43,7 +44,7 @@
 
 .help-modal-header h2 {
   font-size: 1.2em;
-  color: #6c63ff;
+  color: #7dd3fc;
   font-weight: 700;
 }
 
@@ -51,13 +52,13 @@
   background: none;
   border: none;
   font-size: 1.6em;
-  color: #6c63ff;
+  color: #7dd3fc;
   cursor: pointer;
   font-weight: 700;
 }
 
 .help-modal-body {
-  color: #2d3748;
+  color: #eaf6fb;
   font-size: 1em;
 }
 
@@ -69,3 +70,4 @@
 .help-modal-body li {
   margin-bottom: 6px;
 }
+

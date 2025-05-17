@@ -14,26 +14,26 @@ const ControlPanel = ({
   onReset
 }) => {
   return (
-    <div className="control-panel-punk">
+    <div className="control-panel">
       {/* File Upload */}
-      <div className="control-group-punk">
-        <label className="control-label-punk">Upload Campaign Data</label>
+      <div className="control-group">
+        <label className="control-label">Upload Campaign Data</label>
         <FileUpload onFileSelected={onFileSelected} />
       </div>
 
       {/* Mode Toggle */}
-      <div className="control-group-punk">
-        <label className="control-label-punk">Mode</label>
-        <div className="mode-toggle-punk">
+      <div className="control-group">
+        <label className="control-label">Mode</label>
+        <div className="mode-toggle">
           <button
-            className={`mode-btn-punk${mode === 'Simulated' ? ' active' : ''}`}
+            className={`mode-btn${mode === 'Simulated' ? ' active' : ''}`}
             onClick={() => setMode('Simulated')}
             type="button"
           >
             Simulated
           </button>
           <button
-            className={`mode-btn-punk${mode === 'Real-time' ? ' active' : ''}`}
+            className={`mode-btn${mode === 'Real-time' ? ' active' : ''}`}
             onClick={() => setMode('Real-time')}
             type="button"
           >
@@ -43,39 +43,39 @@ const ControlPanel = ({
       </div>
 
       {/* N-Factor Slider */}
-      <div className="control-group-punk">
-        <label className="control-label-punk">N-Factor: <b>{nFactor}</b></label>
+      <div className="control-group">
+        <label className="control-label">N-Factor: <b>{nFactor}</b></label>
         <input
           type="range"
           min={1}
           max={20}
           value={nFactor}
           onChange={e => setNFactor(Number(e.target.value))}
-          className="slider-punk"
+          className="slider"
         />
       </div>
 
       {/* Budget Input */}
-      <div className="control-group-punk">
-        <label className="control-label-punk">Campaign Budget ($)</label>
-        <div className="budget-input-wrapper-punk">
-          <span className="budget-dollar-punk">$</span>
+      <div className="control-group">
+        <label className="control-label">Campaign Budget ($)</label>
+        <div className="budget-input-wrapper">
+          <span className="budget-dollar">$</span>
           <input
             type="number"
             min={0}
             step="any"
             value={budget === '' ? '' : budget}
             onChange={e => setBudget(e.target.value === '' ? '' : Number(e.target.value))}
-            className="budget-input-punk"
+            className="budget-input"
             placeholder="Enter budget"
           />
         </div>
       </div>
 
       {/* Actions */}
-      <div className="control-actions-punk">
-        <button className="run-btn-punk" onClick={onRun}>Start</button>
-        <button className="reset-btn-punk" onClick={onReset}>Stop</button>
+      <div className="control-actions">
+        <button className="run-btn" onClick={onRun}>Start</button>
+        <button className="reset-btn" onClick={onReset}>Stop</button>
       </div>
     </div>
   );

@@ -1,4 +1,6 @@
-/** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors');
+const { fontFamily } = require('tailwindcss/defaultTheme');
+
 module.exports = {
   darkMode: 'class',
   content: [
@@ -8,24 +10,29 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        punkbg: "#181c2f",
-        punkcard: "#232946",
-        punkblue: "#00eaff",
-        punkpink: "#ff00cc",
-        punkpurple: "#8f00ff",
-        punkgreen: "#00ff99",
-        punktext: "#eaf6fb",
+        night: {
+          DEFAULT: "#181f2a",
+          card: "#232946",
+          accent: "#7dd3fc",
+          accent2: "#2563eb",
+          border: "#28304a",
+          table: "#20263a",
+          win: "#34d399",
+          lose: "#f472b6",
+        },
+        ...colors,
       },
       fontFamily: {
-        punk: ['Orbitron', 'Rajdhani', 'Arial', 'sans-serif'],
+        orbitron: ["Orbitron", ...fontFamily.sans],
       },
       boxShadow: {
-        punk: "0 0 16px 2px #00eaff80",
+        soft: "0 2px 16px 0 #10162430",
       },
     },
   },
   plugins: [],
 };
+
 
 
 

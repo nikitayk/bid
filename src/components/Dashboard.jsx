@@ -54,70 +54,67 @@ const Dashboard = () => {
       {/* Top bar */}
       <div className="dashboard-topbar">
         <div className="dashboard-logo">BIDWIT</div>
-        <HelpGuide />
-      </div>
-
-      {/* Top grid: Control Panel | Chart & Stats */}
-      <div className="dashboard-topgrid">
-        <div>
-          <div className="dashboard-card">
-            <ControlPanel
-              nFactor={nFactor}
-              setNFactor={setNFactor}
-              budget={budget}
-              setBudget={setBudget}
-              mode={mode}
-              setMode={setMode}
-              onFileSelected={handleFileSelected}
-              onRun={handleRun}
-              onReset={handleReset}
-            />
-          </div>
-        </div>
-        <div className="dashboard-rightcol">
-          <div className="dashboard-card">
-            <PerformanceChart data={performanceData} />
-          </div>
-          <div className="dashboard-card">
-            <CampaignStats stats={campaignStats} />
-          </div>
+        <div className="dashboard-actions">
+          <HelpGuide />
         </div>
       </div>
 
-      {/* Lower grid: BudgetDonut, KPIStats, BidOutcomes, BidConsole */}
-      <div className="dashboard-lowergrid">
-        <div className="dashboard-card dashboard-center">
-          <BudgetDonut percent={budgetUsed} />
+      {/* Top: Control Panel + Chart */}
+      <div className="dashboard-row">
+        <div className="dashboard-card dashboard-panel">
+          <ControlPanel
+            nFactor={nFactor}
+            setNFactor={setNFactor}
+            budget={budget}
+            setBudget={setBudget}
+            mode={mode}
+            setMode={setMode}
+            onFileSelected={handleFileSelected}
+            onRun={handleRun}
+            onReset={handleReset}
+          />
         </div>
-        <div className="dashboard-card dashboard-center">
-          <KPIStats stats={kpiStats} />
+        <div className="dashboard-card dashboard-chart">
+          <PerformanceChart data={performanceData} />
         </div>
-        <div className="dashboard-card dashboard-colspan2">
-          <div className="dashboard-bid-table-header">
-            <h3 className="dashboard-bid-title">Bid Outcomes</h3>
-            <ExportButton
-              fileName="bid_outcomes.csv"
-              data={bidTableData}
-              columns={[
-                { label: 'Bid ID', key: 'id' },
-                { label: 'CTR', key: 'ctr' },
-                { label: 'CVR', key: 'cvr' },
-                { label: 'Bid Price', key: 'price' },
-                { label: 'Result', key: 'result' }
-              ]}
-            />
-          </div>
-          <BidTable data={bidTableData} />
+      </div>
+
+      {/* Stats Row */}
+      <div className="dashboard-row dashboard-stats-row">
+        <div className="dashboard-card"><CampaignStats stats={campaignStats} /></div>
+        <div className="dashboard-card"><BudgetDonut percent={budgetUsed} /></div>
+        <div className="dashboard-card"><KPIStats stats={kpiStats} /></div>
+      </div>
+
+      {/* Bid Outcomes */}
+      <div className="dashboard-card dashboard-fullwidth">
+        <div className="dashboard-bid-table-header">
+          <h3>Bid Outcomes</h3>
+          <ExportButton
+            fileName="bid_outcomes.csv"
+            data={bidTableData}
+            columns={[
+              { label: 'Bid ID', key: 'id' },
+              { label: 'CTR', key: 'ctr' },
+              { label: 'CVR', key: 'cvr' },
+              { label: 'Bid Price', key: 'price' },
+              { label: 'Result', key: 'result' }
+            ]}
+          />
         </div>
-        <div className="dashboard-card dashboard-colspan2">
-          <BidConsole logs={bidConsoleLogs} />
-        </div>
+        <BidTable data={bidTableData} />
+      </div>
+
+      {/* Bid Console */}
+      <div className="dashboard-card dashboard-fullwidth">
+        <BidConsole logs={bidConsoleLogs} />
       </div>
     </div>
   );
 };
 
 export default Dashboard;
+
 
 
 

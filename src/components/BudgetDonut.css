@@ -17,23 +17,22 @@
 }
 
 .budget-donut-label span {
-  font-size: 1.3em;
-  font-weight: 800;
-  color: #00eaff;
-  font-family: 'Orbitron', 'Rajdhani', Arial, sans-serif;
-  text-shadow: 0 0 8px #00eaff80;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #7dd3fc;
+  font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
 }
 
 .budget-donut-label div {
-  font-size: 0.95em;
+  font-size: 0.85em;
   color: #eaf6fb;
-  font-family: 'Orbitron', 'Rajdhani', Arial, sans-serif;
+  font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
 }
 
 .budget-donut svg {
-  filter: drop-shadow(0 0 8px #00eaff80);
   transition: stroke-dashoffset 0.5s cubic-bezier(0.4,0,0.2,1);
 }
+
 
 
 

@@ -13,7 +13,7 @@ const HelpGuide = () => {
         <div className="help-modal-overlay" onClick={() => setIsOpen(false)}>
           <div className="help-modal" onClick={e => e.stopPropagation()} role="dialog" aria-modal="true">
             <div className="help-modal-header">
-              <h2>BIDWIT Dashboard Guide</h2>
+              <h2>BIDWIT Guide</h2>
               <button className="help-close-btn" onClick={() => setIsOpen(false)} aria-label="Close Help Guide">&times;</button>
             </div>
             <div className="help-modal-body">
@@ -26,7 +26,6 @@ const HelpGuide = () => {
                 <li><strong>Performance Chart:</strong> Track CTR and CVR trends visually.</li>
                 <li><strong>Bid Outcomes:</strong> See bid results and export as CSV.</li>
                 <li><strong>Bid Console:</strong> Monitor real-time logs and clear them as needed.</li>
-                <li><strong>Visual Celebrations:</strong> Watch for confetti on campaign milestones!</li>
               </ol>
               <p>For more help, refer to the documentation or contact support.</p>
             </div>
@@ -38,3 +37,4 @@ const HelpGuide = () => {
 };
 
 export default HelpGuide;
+

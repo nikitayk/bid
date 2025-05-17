@@ -1,63 +1,65 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
 
 .dashboard-root {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #181c2f 0%, #232946 100%);
-  font-family: 'Orbitron', 'Rajdhani', Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, #181f2a 0%, #232946 100%);
+  font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
   color: #eaf6fb;
-  padding: 2.5rem;
 }
 
 .dashboard-topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .dashboard-logo {
-  font-size: 2.25rem;
+  font-size: 2.2rem;
   font-weight: 800;
-  color: #00eaff;
+  color: #7dd3fc;
   letter-spacing: 0.1em;
-  text-shadow: 0 0 8px #00eaff80;
 }
 
-.dashboard-topgrid {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 2.5rem;
-  margin-bottom: 2.5rem;
-}
-
-.dashboard-rightcol {
+.dashboard-actions {
   display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
+  align-items: center;
+  gap: 1rem;
 }
 
-.dashboard-lowergrid {
+.dashboard-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-panel { flex: 1; min-width: 320px; }
+.dashboard-chart { flex: 2; }
+
+.dashboard-stats-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.dashboard-fullwidth {
+  width: 100%;
+  margin-bottom: 1.5rem;
 }
 
 .dashboard-card {
-  background: linear-gradient(135deg, #232946 80%, #181c2f 100%);
-  border-radius: 20px;
-  box-shadow: 0 0 16px 2px #00eaff80;
-  border: 1.5px solid #00eaff40;
-  padding: 2rem;
+  background: #232946;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px 0 #10162430;
+  border: 1.5px solid #28304a;
+  padding: 1.5rem 1.25rem;
   margin-bottom: 0;
   transition: box-shadow 0.2s, background 0.2s;
   display: flex;
   flex-direction: column;
   min-width: 0;
-}
-
-.dashboard-center {
-  align-items: center;
-  justify-content: center;
 }
 
 .dashboard-bid-table-header {
@@ -67,39 +69,9 @@
   margin-bottom: 0.75rem;
 }
 
-.dashboard-bid-title {
-  color: #00eaff;
-  font-size: 1.25rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  text-shadow: 0 0 8px #00eaff80;
-}
-
-.dashboard-colspan2 {
-  grid-column: span 2;
-}
-
-@media (max-width: 1100px) {
-  .dashboard-topgrid {
-    grid-template-columns: 1fr;
-  }
-  .dashboard-rightcol {
-    flex-direction: column;
-  }
-}
-
 @media (max-width: 900px) {
-  .dashboard-lowergrid {
-    grid-template-columns: 1fr;
-  }
-  .dashboard-colspan2 {
-    grid-column: span 1;
-  }
+  .dashboard-root { padding: 1rem; }
+  .dashboard-row { flex-direction: column; }
 }
 
-@media (max-width: 600px) {
-  .dashboard-root {
-    padding: 1rem;
-  }
-}
 
