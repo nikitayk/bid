@@ -12,7 +12,7 @@ const BudgetDonut = ({ percent }) => {
     <div className="budget-donut">
       <svg height={radius * 2} width={radius * 2}>
         <circle
-          stroke="#ecebff"
+          stroke="#232946"
           fill="transparent"
           strokeWidth={stroke}
           r={normalizedRadius}
@@ -20,7 +20,7 @@ const BudgetDonut = ({ percent }) => {
           cy={radius}
         />
         <circle
-          stroke="#6c63ff"
+          stroke="#00eaff"
           fill="transparent"
           strokeWidth={stroke}
           strokeLinecap="round"
@@ -40,4 +40,5 @@ const BudgetDonut = ({ percent }) => {
 };
 
 export default BudgetDonut;
+
 

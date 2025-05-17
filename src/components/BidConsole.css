@@ -1,10 +1,11 @@
 .bid-console {
-  background: #181826;
-  color: #e0e0e0;
+  background: #181c2f;
+  color: #eaf6fb;
   border-radius: 12px;
-  padding: 16px;
+  border: 1.5px solid #00eaff;
   font-family: 'Fira Mono', 'Consolas', monospace;
-  box-shadow: 0 1px 4px rgba(44,62,80,0.04);
+  padding: 16px;
+  box-shadow: 0 0 8px #00eaff80;
   height: 220px;
   display: flex;
   flex-direction: column;
@@ -15,12 +16,12 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 6px;
-  color: #6c63ff;
+  color: #00eaff;
   font-weight: 700;
 }
 
 .console-clear-btn {
-  background: #6c63ff;
+  background: linear-gradient(90deg, #00eaff 0%, #8f00ff 100%);
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -28,6 +29,7 @@
   font-size: 0.95em;
   cursor: pointer;
   font-weight: 600;
+  box-shadow: 0 0 8px #00eaff80;
 }
 
 .bid-console-output {
@@ -40,11 +42,12 @@
 }
 
 .console-log-info {
-  color: #e0e0e0;
+  color: #eaf6fb;
 }
 .console-log-success {
-  color: #2ecc40;
+  color: #00ff99;
 }
 .console-log-error {
-  color: #e74c3c;
+  color: #ff00cc;
 }
+

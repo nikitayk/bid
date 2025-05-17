@@ -30,3 +30,4 @@ const BidConsole = ({ logs = [] }) => {
 };
 
 export default BidConsole;
+

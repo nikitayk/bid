@@ -9,9 +9,9 @@ import BidConsole from './BidConsole';
 import ExportButton from './ExportButton';
 import HelpGuide from './HelpGuide';
 import ConfettiEffect from './ConfettiEffect';
+import './Dashboard.css';
 
 const Dashboard = () => {
-  // Example state and handlers (replace with your actual logic/data)
   const [nFactor, setNFactor] = useState(9);
   const [budget, setBudget] = useState(1000);
   const [mode, setMode] = useState('Simulated');
@@ -51,13 +51,13 @@ const Dashboard = () => {
   return (
     <div className="dashboard-root">
       {showConfetti && <ConfettiEffect />}
-      {/* Top bar: BIDWIT logo/title (no "Dashboard"), Help button */}
+      {/* Top bar */}
       <div className="dashboard-topbar">
         <div className="dashboard-logo">BIDWIT</div>
         <HelpGuide />
       </div>
 
-      {/* Top grid: Control Panel (left), Chart and Stats (right) */}
+      {/* Top grid: Control Panel | Chart & Stats */}
       <div className="dashboard-topgrid">
         <div>
           <div className="dashboard-card">
@@ -118,6 +118,7 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
 
 
 
