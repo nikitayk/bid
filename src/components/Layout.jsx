@@ -1,21 +1,26 @@
+// src/components/Layout.jsx
 import React from 'react';
-import Sidebar from './Sidebar';
 import Header from './Header';
-import './Layout.css';
+import Sidebar from './Sidebar';
 
-const Layout = ({ children }) => (
-  <div className="layout">
-    <Sidebar />
-    <div className="main-content">
-      <Header />
-      <main className="content-area">
-        {children}
-      </main>
+const Layout = ({ children }) => {
+  return (
+    <div className="flex h-screen">
+      <Sidebar />
+      <div className="flex flex-col flex-1">
+        <Header />
+        <main className="flex-1 overflow-y-auto p-6 bg-transparent">
+          {children}
+        </main>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Layout;
+
+
+
 
 
 

@@ -9,7 +9,14 @@ import BidConsole from './BidConsole';
 import ExportButton from './ExportButton';
 import HelpGuide from './HelpGuide';
 import ConfettiEffect from './ConfettiEffect';
-import './Dashboard.css';
+import ThemeToggle from './ThemeToggle';
+
+
+<div className="dashboard-actions">
+  <ThemeToggle />
+  <HelpGuide />
+</div>
+
 
 const Dashboard = () => {
   const [nFactor, setNFactor] = useState(9);
@@ -37,10 +44,12 @@ const Dashboard = () => {
   ];
 
   const handleFileSelected = (file) => setFile(file);
+
   const handleRun = () => {
     setShowConfetti(true);
     setTimeout(() => setShowConfetti(false), 3000);
   };
+
   const handleReset = () => {
     setNFactor(9);
     setBudget(1000);
@@ -51,7 +60,8 @@ const Dashboard = () => {
   return (
     <div className="dashboard-root">
       {showConfetti && <ConfettiEffect />}
-      {/* Top bar */}
+
+      {/* Top Bar */}
       <div className="dashboard-topbar">
         <div className="dashboard-logo">BIDWIT</div>
         <div className="dashboard-actions">
@@ -59,7 +69,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Top: Control Panel + Chart */}
+      {/* Control Panel + Chart */}
       <div className="dashboard-row">
         <div className="dashboard-card dashboard-panel">
           <ControlPanel
@@ -79,7 +89,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Stats Row */}
+      {/* Stats */}
       <div className="dashboard-row dashboard-stats-row">
         <div className="dashboard-card"><CampaignStats stats={campaignStats} /></div>
         <div className="dashboard-card"><BudgetDonut percent={budgetUsed} /></div>
@@ -89,7 +99,7 @@ const Dashboard = () => {
       {/* Bid Outcomes */}
       <div className="dashboard-card dashboard-fullwidth">
         <div className="dashboard-bid-table-header">
-          <h3>Bid Outcomes</h3>
+          <h3 className="text-xl font-bold text-cyan-300">Bid Outcomes</h3>
           <ExportButton
             fileName="bid_outcomes.csv"
             data={bidTableData}
@@ -105,7 +115,7 @@ const Dashboard = () => {
         <BidTable data={bidTableData} />
       </div>
 
-      {/* Bid Console */}
+      {/* Console */}
       <div className="dashboard-card dashboard-fullwidth">
         <BidConsole logs={bidConsoleLogs} />
       </div>
@@ -114,6 +124,8 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+
 
 
 

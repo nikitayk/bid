@@ -1,35 +1,47 @@
+// src/components/PerformanceChart.jsx
 import React from 'react';
-import {
-  LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, CartesianGrid,
-} from 'recharts';
-import './PerformanceChart.css';
+import { Line } from 'react-chartjs-2';
 
-const PerformanceChart = ({ data }) => (
-  <div className="performance-chart">
-    <h3 className="performance-title">CTR & CVR Over Time</h3>
-    <ResponsiveContainer width="100%" height={220}>
-      <LineChart data={data}>
-        <CartesianGrid stroke="#28304a" strokeDasharray="3 3" />
-        <XAxis dataKey="time" stroke="#7dd3fc" />
-        <YAxis stroke="#7dd3fc" />
-        <Tooltip
-          contentStyle={{
-            background: "#232946",
-            border: "1.5px solid #7dd3fc",
-            color: "#eaf6fb",
-            fontFamily: 'Orbitron, Segoe UI, Arial, sans-serif',
-          }}
-          labelStyle={{ color: "#7dd3fc" }}
-        />
-        <Legend wrapperStyle={{ color: "#7dd3fc" }} />
-        <Line type="monotone" dataKey="ctr" stroke="#7dd3fc" strokeWidth={3} dot={{ r: 4 }} name="CTR" />
-        <Line type="monotone" dataKey="cvr" stroke="#a78bfa" strokeWidth={3} dot={{ r: 4 }} name="CVR" />
-      </LineChart>
-    </ResponsiveContainer>
-  </div>
-);
+const PerformanceChart = () => {
+  const data = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+    datasets: [
+      {
+        label: 'Impressions',
+        data: [12000, 19000, 3000, 5000, 2000],
+        fill: false,
+        backgroundColor: '#6366F1',
+        borderColor: '#6366F1',
+      },
+      {
+        label: 'Clicks',
+        data: [1000, 2000, 1500, 3000, 2500],
+        fill: false,
+        backgroundColor: '#10B981',
+        borderColor: '#10B981',
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+    },
+  };
+
+  return (
+    <div className="bg-white shadow rounded-lg p-6">
+      <h2 className="text-xl font-semibold text-gray-800 mb-4">Performance Over Time</h2>
+      <Line data={data} options={options} />
+    </div>
+  );
+};
 
 export default PerformanceChart;
+
 
 
 

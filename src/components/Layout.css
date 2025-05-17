@@ -1,22 +1,24 @@
-.layout {
-  display: flex;
-  height: 100vh;
-  background-color: #f7f8fc;
+/* src/components/Layout.css */
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8fafc;
+  margin: 0;
+  padding: 0;
 }
 
-.main-content {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  overflow-y: auto;
+main {
+  transition: all 0.3s ease-in-out;
 }
 
-.content-area {
-  padding: 24px;
-  flex-grow: 1;
-  overflow-y: auto;
-  background-color: #fafbff;
+::-webkit-scrollbar {
+  width: 8px;
 }
+
+::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+  border-radius: 4px;
+}
+
 
 
