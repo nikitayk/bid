@@ -19,7 +19,6 @@ const ControlPanel = ({
         <label className="control-label">Upload Campaign Data</label>
         <FileUpload onFileSelected={onFileSelected} />
       </div>
-
       <div className="control-group">
         <label className="control-label">Mode</label>
         <div className="mode-toggle">
@@ -39,7 +38,6 @@ const ControlPanel = ({
           </button>
         </div>
       </div>
-
       <div className="control-group">
         <label className="control-label">N-Factor: <b>{nFactor}</b></label>
         <input
@@ -51,18 +49,18 @@ const ControlPanel = ({
           className="slider"
         />
       </div>
-
       <div className="control-group">
         <label className="control-label">Campaign Budget ($)</label>
         <input
           type="number"
           min={0}
-          value={budget}
-          onChange={e => setBudget(Number(e.target.value))}
+          step="any"
+          value={budget === '' ? '' : budget}
+          onChange={e => setBudget(e.target.value === '' ? '' : Number(e.target.value))}
           className="budget-input"
+          placeholder="Enter budget"
         />
       </div>
-
       <div className="control-actions">
         <button className="run-btn" onClick={onRun}>Run</button>
         <button className="reset-btn" onClick={onReset}>Reset</button>
@@ -72,3 +70,4 @@ const ControlPanel = ({
 };
 
 export default ControlPanel;
+
